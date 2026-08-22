@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ango-navy: #1B2A4A;
+  --ango-red: #E8453C;
+  --ango-orange: #F47B20;
+  --ango-gold: #F5A623;
+  --ango-dark: #0D1B2A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ango-red text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-red-600 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  .btn-secondary {
+    @apply border-2 border-ango-navy text-ango-navy px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-ango-navy hover:text-white;
+  }
+  .btn-gold {
+    @apply bg-ango-gold text-ango-dark px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-yellow-500 hover:shadow-lg;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-ango-navy;
+  }
+  .section-subtitle {
+    @apply text-lg text-gray-600 mt-4 max-w-2xl mx-auto;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+}

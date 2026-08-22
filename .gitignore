@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Environment
+.env
+.env.backup
+.env.production
+
+# IDE
+.idea/
+.vscode/
+.vs/
+.fleet/
+.nova/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+frontend/dist/
+public/build/
+public/hot
+
+# Logs
+*.log
+npm-debug.log*
+
+# PHP
+.phpunit.result.cache
+.phpunit.cache/
+.phpactor.json
+
+# Storage
+storage/*.key
+storage/pail
+
+# Other
+auth.json
+Homestead.json
+Homestead.yaml
+composer-setup.php
