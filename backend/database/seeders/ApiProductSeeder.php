@@ -99,6 +99,17 @@ class ApiProductSeeder extends Seeder
                 'environment' => 'sandbox',
                 'metadata' => ['method' => 'POST', 'rate_limit' => 10],
             ],
+            [
+                'name' => 'Geração de QR Code',
+                'slug' => 'qrcode-generator',
+                'description' => 'API para geração de QR Code',
+                'endpoint_base' => '/api/v1/gateway/qr',
+                'version' => '1.0.0',
+                'is_active' => true,
+                'requires_subscription' => true,
+                'environment' => 'sandbox',
+                'metadata' => ['method' => 'POST', 'rate_limit' => 50],
+            ],
         ];
 
         foreach ($products as $product) {
@@ -106,32 +117,41 @@ class ApiProductSeeder extends Seeder
         }
 
         // Attach products to plans via pivot
-        $biPlan = Plan::where('slug', 'bi')->first();
-        $nifPlan = Plan::where('slug', 'nif-empresa')->first();
-        $biNifPlan = Plan::where('slug', 'bi-nif')->first();
+        $starterPlan = Plan::where('slug', 'starter')->first();
+        $essencialPlan = Plan::where('slug', 'essencial')->first();
+        $profissionalPlan = Plan::where('slug', 'profissional')->first();
+        $enterprisePlan = Plan::where('slug', 'enterprise')->first();
 
-        $biProducts = ['bi-validation', 'identity-verification', 'location-lookup', 'phone-validation'];
-        $nifProducts = ['nif-validation', 'identity-verification', 'location-lookup', 'phone-validation'];
-        $allProducts = ['nif-validation', 'bi-validation', 'identity-verification', 'location-lookup', 'phone-validation', 'otp-service', 'sms-gateway', 'email-gateway'];
+        $starterProducts = ['bi-validation', 'phone-validation'];
+        $essencialProducts = ['bi-validation', 'nif-validation', 'phone-validation', 'sms-gateway'];
+        $profissionalProducts = ['nif-validation', 'bi-validation', 'identity-verification', 'phone-validation', 'otp-service', 'sms-gateway', 'email-gateway', 'qrcode-generator'];
+        $enterpriseProducts = ['nif-validation', 'bi-validation', 'identity-verification', 'location-lookup', 'phone-validation', 'otp-service', 'sms-gateway', 'email-gateway', 'qrcode-generator'];
 
-        foreach ($biProducts as $slug) {
+        foreach ($starterProducts as $slug) {
             $product = ApiProduct::where('slug', $slug)->first();
-            if ($product) {
-                $biPlan->apiProducts()->attach($product->id);
+            if ($product && $starterPlan) {
+                $starterPlan->apiProducts()->attach($product->id);
             }
         }
 
-        foreach ($nifProducts as $slug) {
+        foreach ($essencialProducts as $slug) {
             $product = ApiProduct::where('slug', $slug)->first();
-            if ($product) {
-                $nifPlan->apiProducts()->attach($product->id);
+            if ($product && $essencialPlan) {
+                $essencialPlan->apiProducts()->attach($product->id);
             }
         }
 
-        foreach ($allProducts as $slug) {
+        foreach ($profissionalProducts as $slug) {
             $product = ApiProduct::where('slug', $slug)->first();
-            if ($product) {
-                $biNifPlan->apiProducts()->attach($product->id);
+            if ($product && $profissionalPlan) {
+                $profissionalPlan->apiProducts()->attach($product->id);
+            }
+        }
+
+        foreach ($enterpriseProducts as $slug) {
+            $product = ApiProduct::where('slug', $slug)->first();
+            if ($product && $enterprisePlan) {
+                $enterprisePlan->apiProducts()->attach($product->id);
             }
         }
     }

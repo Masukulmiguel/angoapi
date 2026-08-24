@@ -1,9 +1,9 @@
 <template>
-  <div class="space-y-6">
+  <div class="space-y-6 dark:bg-gray-900 dark:text-white">
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="text-2xl font-bold text-ango-navy">Pagamentos</h1>
-        <p class="text-gray-500 text-sm mt-1">Histórico de pagamentos e envio de comprovativos</p>
+        <h1 class="text-2xl font-bold text-ango-navy dark:text-white">Pagamentos</h1>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Histórico de pagamentos e envio de comprovativos</p>
       </div>
       <button @click="showPay = true" class="btn-primary text-sm !px-5 !py-2.5">
         + Novo Pagamento
@@ -12,39 +12,39 @@
 
     <div v-if="store.loading" class="py-12"><LoadingSpinner /></div>
 
-    <div v-else-if="store.list.length" class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+    <div v-else-if="store.list.length" class="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
       <table class="w-full text-sm">
-        <thead class="bg-gray-50 border-b border-gray-200">
+        <thead class="bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
           <tr>
-            <th class="text-left px-5 py-3 font-medium text-gray-500">Data</th>
-            <th class="text-left px-5 py-3 font-medium text-gray-500">Plano</th>
-            <th class="text-left px-5 py-3 font-medium text-gray-500">Valor</th>
-            <th class="text-left px-5 py-3 font-medium text-gray-500">Estado</th>
-            <th class="text-left px-5 py-3 font-medium text-gray-500">Comprovativo</th>
+            <th class="text-left px-5 py-3 font-medium text-gray-500 dark:text-gray-300">Data</th>
+            <th class="text-left px-5 py-3 font-medium text-gray-500 dark:text-gray-300">Plano</th>
+            <th class="text-left px-5 py-3 font-medium text-gray-500 dark:text-gray-300">Valor</th>
+            <th class="text-left px-5 py-3 font-medium text-gray-500 dark:text-gray-300">Estado</th>
+            <th class="text-left px-5 py-3 font-medium text-gray-500 dark:text-gray-300">Comprovativo</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100">
-          <tr v-for="p in store.list" :key="p.id" class="hover:bg-gray-50">
-            <td class="px-5 py-3 text-gray-600">{{ p.created_at || 'N/A' }}</td>
-            <td class="px-5 py-3 font-medium text-ango-navy">{{ p.plan?.name || 'N/A' }}</td>
-            <td class="px-5 py-3 text-gray-600">{{ p.amount ? p.amount.toLocaleString() + ' Kz' : 'N/A' }}</td>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+          <tr v-for="p in store.list" :key="p.id" class="hover:bg-gray-50 dark:hover:bg-gray-700">
+            <td class="px-5 py-3 text-gray-600 dark:text-gray-300">{{ p.created_at || 'N/A' }}</td>
+            <td class="px-5 py-3 font-medium text-ango-navy dark:text-white">{{ p.plan?.name || 'N/A' }}</td>
+            <td class="px-5 py-3 text-gray-600 dark:text-gray-300">{{ p.amount ? p.amount.toLocaleString() + ' Kz' : 'N/A' }}</td>
             <td class="px-5 py-3">
               <span class="px-2 py-0.5 rounded-full text-xs font-medium"
                 :class="statusClass(p.status)">{{ p.status || 'pending' }}</span>
             </td>
             <td class="px-5 py-3">
-              <span v-if="p.proof" class="text-green-600 text-xs font-medium">Enviado</span>
-              <span v-else class="text-gray-400 text-xs">Pendente</span>
+              <span v-if="p.proof" class="text-green-600 dark:text-green-400 text-xs font-medium">Enviado</span>
+              <span v-else class="text-gray-400 dark:text-gray-500 text-xs">Pendente</span>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div v-else class="bg-white rounded-xl border border-gray-100 shadow-sm p-8 text-center">
+    <div v-else class="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-8 text-center">
       <div class="text-5xl mb-4">💰</div>
-      <h3 class="text-lg font-bold text-ango-navy mb-2">Sem pagamentos</h3>
-      <p class="text-gray-500 text-sm mb-6">Ainda não realizou nenhum pagamento.</p>
+      <h3 class="text-lg font-bold text-ango-navy dark:text-white mb-2">Sem pagamentos</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Ainda não realizou nenhum pagamento.</p>
       <router-link to="/planos" class="btn-primary text-sm">Ver Planos</router-link>
     </div>
 
@@ -52,13 +52,13 @@
       <transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100"
                   leave-active-class="transition duration-150 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
         <div v-if="showPay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" @click.self="showPay = false">
-          <div class="bg-white rounded-2xl shadow-xl p-6 w-full max-w-md">
-            <h3 class="text-lg font-bold text-ango-navy mb-4">Novo Pagamento</h3>
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 w-full max-w-md">
+            <h3 class="text-lg font-bold text-ango-navy dark:text-white mb-4">Novo Pagamento</h3>
             <form @submit.prevent="submitPayment" class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1.5">Plano</label>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Plano</label>
                 <select v-model="payment.plan_id" required
-                  class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-ango-red outline-none text-sm">
+                  class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-ango-red outline-none text-sm">
                   <option value="">Selecionar plano</option>
                   <option value="1">BI — 36.000 Kz</option>
                   <option value="2">NIF — 60.000 Kz</option>
@@ -66,15 +66,15 @@
                 </select>
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1.5">Método de pagamento</label>
-                <select v-model="payment.method" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-ango-red outline-none text-sm">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Método de pagamento</label>
+                <select v-model="payment.method" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-ango-red outline-none text-sm">
                   <option value="transfer">Transferência Bancária</option>
                   <option value="express">Multicaixa Express</option>
                   <option value="reference">Referência</option>
                 </select>
               </div>
               <div class="flex gap-3 justify-end">
-                <button type="button" @click="showPay = false" class="px-4 py-2.5 text-sm text-gray-500 hover:text-gray-700">Cancelar</button>
+                <button type="button" @click="showPay = false" class="px-4 py-2.5 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">Cancelar</button>
                 <button type="submit" class="btn-primary text-sm !px-5 !py-2.5">Submeter</button>
               </div>
             </form>

@@ -21,7 +21,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
-            'status' => User::STATUS_PENDING,
+            'status' => User::STATUS_ACTIVE,
         ]);
 
         $token = $user->createToken('auth-token')->plainTextToken;

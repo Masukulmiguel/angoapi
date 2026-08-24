@@ -32,18 +32,18 @@ body {
     @apply bg-ango-red text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-red-600 hover:shadow-lg hover:-translate-y-0.5;
   }
   .btn-secondary {
-    @apply border-2 border-ango-navy text-ango-navy px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-ango-navy hover:text-white;
+    @apply border-2 border-ango-navy text-ango-navy px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-ango-navy hover:text-white dark:border-gray-400 dark:text-gray-300 dark:hover:bg-white dark:hover:text-gray-900;
   }
   .btn-gold {
     @apply bg-ango-gold text-ango-dark px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-yellow-500 hover:shadow-lg;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-ango-navy;
+    @apply text-3xl md:text-4xl font-bold text-ango-navy dark:text-white;
   }
   .section-subtitle {
-    @apply text-lg text-gray-600 mt-4 max-w-2xl mx-auto;
+    @apply text-lg text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto;
   }
   .card {
-    @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-800;
   }
 }

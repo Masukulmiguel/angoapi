@@ -23,9 +23,9 @@
                 Começar agora
                 <svg class="inline-block w-4 h-4 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </router-link>
-              <router-link to="/docs"
-                class="px-8 py-3.5 rounded-lg border-2 border-white/20 text-white font-semibold hover:bg-white/10 transition-all">
-                Ver APIs
+              <router-link to="/try-it"
+                class="px-8 py-3.5 rounded-lg border-2 border-green-400/50 text-green-400 font-semibold hover:bg-green-400/10 transition-all">
+                Testar Gratis
               </router-link>
             </div>
           </div>
@@ -58,7 +58,7 @@
     </section>
 
     <!-- COMO FUNCIONA -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white dark:bg-gray-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 anim-el">
           <h2 class="section-title">Como Funciona</h2>
@@ -67,42 +67,42 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div v-for="(step, i) in howItWorks" :key="i" class="text-center anim-el">
             <div class="relative mb-4">
-              <div class="w-16 h-16 mx-auto rounded-2xl bg-ango-navy/10 flex items-center justify-center"
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-ango-navy/10 dark:bg-white/10 flex items-center justify-center"
                    :class="step.gradient">
-                <component :is="step.icon" class="w-7 h-7 text-ango-navy" />
+                <component :is="step.icon" class="w-7 h-7 text-ango-navy dark:text-white" />
               </div>
               <span class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-ango-navy text-white text-xs font-bold flex items-center justify-center">{{ i + 1 }}</span>
             </div>
-            <h3 class="text-sm font-semibold text-ango-navy mb-1">{{ step.title }}</h3>
-            <p class="text-xs text-gray-500">{{ step.desc }}</p>
+            <h3 class="text-sm font-semibold text-ango-navy dark:text-white mb-1">{{ step.title }}</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{{ step.desc }}</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- APIs DISPONÍVEIS -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-gray-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 anim-el">
           <h2 class="section-title">APIs Disponíveis</h2>
           <p class="section-subtitle">Serviços robustos para integrar na sua aplicação</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="(api, i) in apis" :key="i" class="card group cursor-pointer anim-el">
+          <div v-for="(api, i) in apis" :key="i" class="card group cursor-pointer anim-el dark:bg-gray-900 dark:border-gray-800">
             <div class="flex items-start justify-between mb-4">
               <div class="w-12 h-12 rounded-xl flex items-center justify-center" :class="api.bg">
-                <component :is="api.icon" class="w-6 h-6 text-ango-navy" />
+                <component :is="api.icon" class="w-6 h-6 text-ango-navy dark:text-white" />
               </div>
             </div>
-            <h3 class="text-lg font-bold text-ango-navy mb-2 group-hover:text-ango-red transition-colors">{{ api.name }}</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">{{ api.desc }}</p>
+            <h3 class="text-lg font-bold text-ango-navy dark:text-white mb-2 group-hover:text-ango-red transition-colors">{{ api.name }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{{ api.desc }}</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PLANOS -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white dark:bg-gray-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 anim-el">
           <h2 class="section-title">Planos</h2>
@@ -111,24 +111,24 @@
         <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div v-for="(plan, i) in plans" :key="i"
             class="relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 anim-el"
-            :class="plan.featured ? 'bg-ango-navy text-white shadow-2xl scale-105 border-2 border-ango-gold' : 'bg-white border-2 border-gray-100 shadow-lg hover:shadow-xl'">
+            :class="plan.featured ? 'bg-ango-navy text-white shadow-2xl scale-105 border-2 border-ango-gold' : 'bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-xl'">
             <div v-if="plan.featured" class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-ango-gold text-ango-dark text-xs font-bold">
               MAIS POPULAR
             </div>
             <div class="mb-6">
-              <h3 class="text-xl font-bold mb-2" :class="plan.featured ? 'text-white' : 'text-ango-navy'">{{ plan.name }}</h3>
-              <p class="text-sm" :class="plan.featured ? 'text-gray-300' : 'text-gray-500'">{{ plan.desc }}</p>
+              <h3 class="text-xl font-bold mb-2" :class="plan.featured ? 'text-white' : 'text-ango-navy dark:text-white'">{{ plan.name }}</h3>
+              <p class="text-sm" :class="plan.featured ? 'text-gray-300' : 'text-gray-500 dark:text-gray-400'">{{ plan.desc }}</p>
             </div>
             <div class="mb-8">
-              <span class="text-4xl font-extrabold" :class="plan.featured ? 'text-white' : 'text-ango-navy'">{{ plan.price }}</span>
-              <span class="text-sm ml-1" :class="plan.featured ? 'text-gray-300' : 'text-gray-500'">Kz/mês</span>
+              <span class="text-4xl font-extrabold" :class="plan.featured ? 'text-white' : 'text-ango-navy dark:text-white'">{{ plan.price }}</span>
+              <span class="text-sm ml-1" :class="plan.featured ? 'text-gray-300' : 'text-gray-500 dark:text-gray-400'">Kz/mês</span>
             </div>
             <ul class="space-y-3 mb-8">
               <li v-for="(f, fi) in plan.features" :key="fi" class="flex items-start gap-3 text-sm">
                 <svg class="w-5 h-5 flex-shrink-0 mt-0.5" :class="plan.featured ? 'text-ango-gold' : 'text-green-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span :class="plan.featured ? 'text-gray-200' : 'text-gray-600'">{{ f }}</span>
+                <span :class="plan.featured ? 'text-gray-200' : 'text-gray-600 dark:text-gray-400'">{{ f }}</span>
               </li>
             </ul>
             <router-link to="/register" class="block text-center py-3 rounded-lg font-semibold text-sm transition-all"
@@ -141,7 +141,7 @@
     </section>
 
     <!-- SEGURANÇA -->
-    <section class="py-24 bg-ango-dark">
+    <section class="py-24 bg-ango-dark dark:bg-gray-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 anim-el">
           <h2 class="text-3xl md:text-4xl font-bold text-white">Segurança</h2>
@@ -160,22 +160,22 @@
     </section>
 
     <!-- DEVELOPERS -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-gray-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div class="anim-el">
             <h2 class="section-title mb-6">Feito para Developers</h2>
-            <p class="text-gray-500 leading-relaxed mb-8">
+            <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
               Documentação clara, SDKs oficiais e exemplos práticos para integrar rapidamente. Suporte para cURL, JavaScript, Python e mais.
             </p>
             <div class="space-y-4">
-              <div v-for="(f, i) in devFeatures" :key="i" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100">
-                <div class="w-10 h-10 rounded-lg bg-ango-navy/5 flex items-center justify-center">
-                  <component :is="f.icon" class="w-5 h-5 text-ango-navy" />
+              <div v-for="(f, i) in devFeatures" :key="i" class="flex items-center gap-4 p-4 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800">
+                <div class="w-10 h-10 rounded-lg bg-ango-navy/5 dark:bg-white/10 flex items-center justify-center">
+                  <component :is="f.icon" class="w-5 h-5 text-ango-navy dark:text-white" />
                 </div>
                 <div>
-                  <h4 class="font-semibold text-sm text-ango-navy">{{ f.title }}</h4>
-                  <p class="text-xs text-gray-500">{{ f.desc }}</p>
+                  <h4 class="font-semibold text-sm text-ango-navy dark:text-white">{{ f.title }}</h4>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{{ f.desc }}</p>
                 </div>
               </div>
             </div>
@@ -208,17 +208,17 @@
     </section>
 
     <!-- FAQ -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white dark:bg-gray-900">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 anim-el">
           <h2 class="section-title">Perguntas Frequentes</h2>
         </div>
         <div class="space-y-3">
-          <div v-for="(faq, i) in faqs" :key="i" class="border border-gray-200 rounded-xl overflow-hidden anim-el">
+          <div v-for="(faq, i) in faqs" :key="i" class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden anim-el">
             <button @click="toggleFaq(i)"
-              class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-sm text-ango-navy">{{ faq.q }}</span>
-              <svg class="w-5 h-5 text-gray-400 transition-transform flex-shrink-0 ml-4"
+              class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <span class="font-semibold text-sm text-ango-navy dark:text-white">{{ faq.q }}</span>
+              <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform flex-shrink-0 ml-4"
                    :class="openFaq === i ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
@@ -227,7 +227,7 @@
                         enter-to-class="opacity-100 max-h-40" leave-active-class="transition duration-150 ease-in"
                         leave-from-class="opacity-100 max-h-40" leave-to-class="opacity-0 max-h-0">
               <div v-if="openFaq === i" class="px-6 pb-4">
-                <p class="text-sm text-gray-500 leading-relaxed">{{ faq.a }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{{ faq.a }}</p>
               </div>
             </transition>
           </div>
@@ -236,23 +236,23 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-gray-950">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center anim-el">
         <h2 class="section-title mb-6">Contacte-nos</h2>
-        <p class="text-gray-500 mb-10">Tem dúvidas? Fale connosco.</p>
+        <p class="text-gray-500 dark:text-gray-400 mb-10">Tem dúvidas? Fale connosco.</p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <a href="tel:+244935603163" class="flex items-center justify-center gap-3 px-8 py-4 bg-white rounded-xl border border-gray-200 hover:border-ango-red hover:shadow-lg transition-all">
+          <a href="tel:+244935603163" class="flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-ango-red hover:shadow-lg transition-all">
             <Phone class="w-5 h-5 text-ango-red" />
             <div class="text-left">
-              <p class="text-xs text-gray-400">Telefone</p>
-              <p class="font-semibold text-ango-navy">935603163</p>
+              <p class="text-xs text-gray-400 dark:text-gray-500">Telefone</p>
+              <p class="font-semibold text-ango-navy dark:text-white">935603163</p>
             </div>
           </a>
-          <a href="mailto:info@angoapi.co.ao" class="flex items-center justify-center gap-3 px-8 py-4 bg-white rounded-xl border border-gray-200 hover:border-ango-red hover:shadow-lg transition-all">
+          <a href="mailto:info@angoapi.co.ao" class="flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-ango-red hover:shadow-lg transition-all">
             <Mail class="w-5 h-5 text-ango-red" />
             <div class="text-left">
-              <p class="text-xs text-gray-400">Email</p>
-              <p class="font-semibold text-ango-navy">info@angoapi.co.ao</p>
+              <p class="text-xs text-gray-400 dark:text-gray-500">Email</p>
+              <p class="font-semibold text-ango-navy dark:text-white">info@angoapi.co.ao</p>
             </div>
           </a>
         </div>

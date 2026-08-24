@@ -11,7 +11,7 @@ class NifController extends Controller
     public function validate(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'nif' => ['required', 'string', 'size:9', 'digits'],
+            'nif' => ['required', 'string', 'size:10', 'digits'],
         ]);
 
         return response()->json([

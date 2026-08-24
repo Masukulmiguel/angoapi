@@ -1,11 +1,9 @@
 <template>
-  <aside class="fixed left-0 top-0 bottom-0 bg-ango-navy text-white z-40 transition-all duration-300 flex flex-col"
+  <aside class="fixed left-0 top-0 bottom-0 bg-ango-navy dark:bg-gray-900 text-white z-40 transition-all duration-300 flex flex-col"
          :class="collapsed ? 'w-16' : 'w-64'">
     <div class="h-16 flex items-center px-4 border-b border-white/10">
       <router-link to="/" class="flex items-center gap-2 overflow-hidden">
-        <div class="w-8 h-8 rounded-lg bg-ango-red flex items-center justify-center flex-shrink-0">
-          <span class="text-white font-bold text-sm">A</span>
-        </div>
+        <img src="/logo-fundo-escuro.png" alt="AngoAPI" class="w-8 h-8 flex-shrink-0" />
         <span v-if="!collapsed" class="text-lg font-bold whitespace-nowrap">AngoAPI</span>
       </router-link>
     </div>
