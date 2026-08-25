@@ -42,3 +42,5 @@ envVars:
     value: https://api-sandbox.bitpay.ao
   - key: BITPAY_WEBHOOK_URL
     value: https://angoapi.onrender.com/api/payments/callback
+  - key: BITPAY_WEBHOOK_SECRET
+    value: whsec_67cfc03de9fc4d8c5a7198de56cbc3c0

@@ -51,6 +51,7 @@ return [
         'secret_key' => env('BITPAY_SECRET_KEY', ''),
         'public_key' => env('BITPAY_PUBLIC_KEY', ''),
         'webhook_url' => env('BITPAY_WEBHOOK_URL', ''),
+        'webhook_secret' => env('BITPAY_WEBHOOK_SECRET', ''),
     ],
 
 ];

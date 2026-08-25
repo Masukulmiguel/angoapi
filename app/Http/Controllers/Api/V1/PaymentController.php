@@ -59,9 +59,24 @@ class PaymentController extends Controller
 
     /**
      * Webhook callback from BitPay.
+     * Verifies signature before processing.
      */
     public function callback(Request $request): JsonResponse
     {
+        // Verify webhook signature
+        $signature = $request->header('X-BitPay-Signature');
+        $secret = config('services.bitpay.webhook_secret');
+
+        if ($secret && $signature) {
+            $rawBody = $request->getContent();
+            $expectedHash = hash_hmac('sha256', $rawBody, $secret);
+
+            if (!hash_equals($expectedHash, $signature)) {
+                Log::warning('BitPay webhook: invalid signature');
+                return response()->json(['message' => 'Invalid signature'], 401);
+            }
+        }
+
         Log::info('BitPay callback received', $request->all());
 
         $data = $request->all();
