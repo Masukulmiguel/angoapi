@@ -51,8 +51,10 @@ Route::prefix('v1/sandbox')->withoutMiddleware([\Laravel\Sanctum\Http\Middleware
 Route::get('/plans', [PlanController::class, 'index']);
 Route::get('/plans/{plan}', [PlanController::class, 'show']);
 
-// BitPay webhook callback (no auth needed)
-Route::post('/payments/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+// BitPay webhook callback (no auth, no CSRF, no middleware)
+Route::post('/payments/callback', [PaymentController::class, 'callback'])
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class])
+    ->name('payment.callback');
 
 // Authenticated User Routes
 Route::middleware(['auth:sanctum', EnsureUserIsActive::class])->group(function () {
