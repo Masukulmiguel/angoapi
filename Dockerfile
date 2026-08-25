@@ -17,4 +17,4 @@ RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framewor
 
 EXPOSE 8000
 
-CMD php artisan key:generate --force; timeout 30 php artisan migrate --force || true; timeout 10 php artisan db:seed --force || true; exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD timeout 30 php artisan migrate --force || true; timeout 10 php artisan db:seed --force || true; exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
