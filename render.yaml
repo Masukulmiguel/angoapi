@@ -2,24 +2,23 @@ name: angoapi-backend
 type: web
 
 env: php
-buildCommand: composer install --no-dev --optimize-autoloader && php artisan migrate --force && php artisan db:seed --force
-startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+
+buildCommand: composer install --no-dev --optimize-autoloader
+startCommand: php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT
 
 envVars:
   - key: APP_ENV
     value: production
   - key: APP_DEBUG
-    value: "false"
+    value: "true"
   - key: APP_KEY
     generateValue: true
   - key: APP_URL
     value: https://angoapi.onrender.com
   - key: CACHE_DRIVER
     value: file
-  - key: DATABASE_CONNECTION
+  - key: DB_CONNECTION
     value: pgsql
-  - key: DATABASE_URL
-    value: postgresql://postgres:Xmm9rwYGSUc3zqK9@db.aljenttapcyuzxrsvpii.supabase.co:5432/postgres
   - key: DB_HOST
     value: db.aljenttapcyuzxrsvpii.supabase.co
   - key: DB_PORT
