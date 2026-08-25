@@ -1,7 +1,7 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    libpq-dev libzip-dev unzip git \
+    libpq-dev libzip-dev unzip git coreutils \
     && docker-php-ext-install pdo_pgsql zip bcmath opcache \
     && rm -rf /var/lib/apt/lists/*
 
@@ -17,4 +17,4 @@ RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framewor
 
 EXPOSE 8000
 
-CMD php artisan key:generate --force; php artisan migrate --force; php artisan db:seed --force; exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD php artisan key:generate --force; timeout 30 php artisan migrate --force || true; timeout 10 php artisan db:seed --force || true; exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
