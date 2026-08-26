@@ -35,4 +35,34 @@ return [
         ],
     ],
 
+    'proxypay' => [
+        'base_url' => env('PROXYPAY_BASE_URL', 'https://api.sandbox.proxypay.co.ao'),
+        'api_key' => env('PROXYPAY_API_KEY', ''),
+        'pos_id' => env('PROXYPAY_POS_ID', 0),
+    ],
+
+    'multicaixa_express' => [
+        'base_url' => env('MULTICAIXA_EXPRESS_BASE_URL', 'https://sandbox.paybyrd.com'),
+        'api_key' => env('MULTICAIXA_EXPRESS_API_KEY', ''),
+    ],
+
+    'bitpay' => [
+        'base_url' => env('BITPAY_BASE_URL', 'https://api-sandbox.bitpay.ao'),
+        'secret_key' => env('BITPAY_SECRET_KEY', ''),
+        'public_key' => env('BITPAY_PUBLIC_KEY', ''),
+        'webhook_url' => env('BITPAY_WEBHOOK_URL', ''),
+        'webhook_secret' => env('BITPAY_WEBHOOK_SECRET', ''),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
+
+    'openai' => [
+        'api_key' => env('OPENAI_API_KEY'),
+        'model' => env('OPENAI_MODEL', 'gpt-4o-mini'),
+    ],
+
 ];
