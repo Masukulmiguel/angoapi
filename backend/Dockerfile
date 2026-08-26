@@ -12,6 +12,8 @@ COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 COPY . .
 
+RUN cp -n .env.production .env 2>/dev/null || cp -n .env.example .env 2>/dev/null || touch .env
+
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
     && chmod -R 777 storage bootstrap/cache
 
